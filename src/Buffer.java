@@ -81,9 +81,10 @@ public class Buffer
 			{
 				mensajes.add(mensaje);
 				recibido = true;
+				System.out.println("Mensaje recibido ");
 			}
-			if(!recibido)
-				System.err.println("se llenó la cola");
+//			if(!recibido)
+//				System.err.println("se llenó la cola");
 		}
 		return recibido;
 	}
@@ -112,6 +113,7 @@ public class Buffer
 		{
 			if(!mensajes.isEmpty())
 			{
+				System.out.println("Mensaje enviado a servidor");
 				mensaje = mensajes.get(0);
 				mensajes.remove(0);
 			}

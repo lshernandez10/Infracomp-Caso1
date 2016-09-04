@@ -36,6 +36,7 @@ public class Mensaje
 		synchronized(cliente)
 		{
 			cliente.notify();
+			System.out.println("CLIENTE NOTIFICADO ");
 		}
 	}
 }

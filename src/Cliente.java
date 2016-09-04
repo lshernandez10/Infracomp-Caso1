@@ -56,7 +56,7 @@ public class Cliente extends Thread
 				yield();
 			}
 			mensajesPorEnviar--;
-			System.out.println("El mensaje "+ (mensajesRespondidos+1) + " del cliente " + getId() + " está en el canal");
+//			System.out.println("El mensaje "+ (mensajesRespondidos+1) + " del cliente " + getId() + " está en el canal");
 			
 			synchronized (this) 
 			{

@@ -25,6 +25,7 @@ public class Servidor extends Thread
 		if(mensaje != null)
 		{
 			mensaje.setContestado(true);
+			System.out.println("Servidor respondió");
 		}
 	}
 	
@@ -44,10 +45,11 @@ public class Servidor extends Thread
 				}
 			}
 			
-			if(mensaje != null)
+			if(mensaje != null && hayClientes)
 			{
 				synchronized(this)
 				{
+					hayClientes = canal.getClientes().size() > 0;
 					mensaje.notificarAlCliente();
 					mensaje = null;
 				}
