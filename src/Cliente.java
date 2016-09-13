@@ -23,6 +23,11 @@ public class Cliente extends Thread
 	 */
 	private Buffer canal; 
 	
+	/**
+	 * Es el mensaje actual del cliente
+	 */
+	private Mensaje mensajeActual;
+	
 	//CONSTRUCTOR
 	
 	public Cliente(int numeroMensajes, Buffer pCanal) 
@@ -35,10 +40,11 @@ public class Cliente extends Thread
 	
 	//MÉTODOS
 	
-	public boolean enviarMensaje()
+	public synchronized boolean enviarMensaje()
 	{
-		Mensaje mensaje = new Mensaje(this);
-		boolean enviado = canal.recibirMensajeDeCliente(mensaje);
+		if(mensajeActual == null)
+			mensajeActual = new Mensaje(this);
+		boolean enviado = canal.recibirMensajeDeCliente(mensajeActual);
 		
 		return enviado;
 	}
@@ -55,6 +61,7 @@ public class Cliente extends Thread
 				respondido = enviarMensaje();
 				yield();
 			}
+			mensajeActual = null;
 			mensajesPorEnviar--;
 //			System.out.println("El mensaje "+ (mensajesRespondidos+1) + " del cliente " + getId() + " está en el canal");
 			

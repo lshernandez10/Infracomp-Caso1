@@ -45,14 +45,14 @@ public class Servidor extends Thread
 				}
 			}
 			
-			if(mensaje != null && hayClientes)
+			if(hayClientes)
 			{
-				synchronized(this)
-				{
-					hayClientes = canal.getClientes().size() > 0;
+//				synchronized(this)
+//				{
+//					hayClientes = canal.getClientes().size() > 0;
 					mensaje.notificarAlCliente();
 					mensaje = null;
-				}
+//				}
 			}
 			
 			hayClientes = canal.getClientes().size() > 0;

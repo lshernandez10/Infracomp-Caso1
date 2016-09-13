@@ -31,7 +31,7 @@ public class Mensaje
 		this.contestado = contestado;
 	}
 	
-	public synchronized void notificarAlCliente()
+	public void notificarAlCliente()
 	{
 		synchronized(cliente)
 		{
